@@ -63,6 +63,25 @@ img {
   height: auto;
 }
 
+.btn {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  background-color: #4d5ae5;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: currentColor;
+  cursor: pointer;
+  display: block;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #404bbf;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -207,26 +226,10 @@ img {
 }
 
 .order-button {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  background-color: #4d5ae5;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: currentColor;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
   min-width: 169px;
   min-height: 56px;
-  border: none;
+  margin: 0 auto;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.order-button:hover,
-.order-button:focus {
-  background-color: #404bbf;
 }
 
 /* #endregion */
@@ -418,6 +421,7 @@ img {
 .socials-wrapper {
   font-weight: 500;
   max-width: 208px;
+  margin-right: 80px;
 }
 .socials-text {
   color: #ffffff;
@@ -446,5 +450,250 @@ img {
 }
 .footer-socials-icon {
   fill: #f4f4fd;
+}
+
+.subscribe-form-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.subscribe-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subscribe-form-label {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.subscribe-form-input {
+  border: 1px solid #fff;
+  font-size: 12px;
+  border-radius: 4px;
+  width: 264px;
+  height: 40px;
+  padding: 8px 16px;
+  color: #fff;
+  background-color: transparent;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.subscribe-form-input:focus {
+  border-color: #31d0aa;
+  outline: none;
+}
+
+.subscribe-form-input::placeholder {
+  color: currentColor;
+}
+
+.subscribe-form-button {
+  min-height: 40px;
+  min-width: 165px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.subscribe-form-button:focus,
+.subscribe-form-button:hover {
+  background-color: #31d0aa;
+}
+.subscribe-button-icon {
+  fill: currentColor;
+}
+/* #endregion */
+
+/* #region backdrop */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 400ms ease-in, visibility 400ms ease-in;
+  transition-delay: 150ms;
+}
+
+.backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+  transition-delay: 0ms;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-70%);
+  width: 408px;
+  min-height: 584px;
+  padding: 24px;
+  border-radius: 4px;
+  background: #fcfcfc;
+
+  opacity: 0;
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-open .modal {
+  transition-delay: 600ms;
+  transform: translateX(-50%) translateY(-50%) rotate(720deg);
+  opacity: 1;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  background-color: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+  background-color: #404bbf;
+  border-color: transparent;
+  fill: #fff;
+}
+
+.modal-caption {
+  padding-top: 48px;
+  padding-left: 12px;
+  max-width: 360px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #2e2f42;
+}
+
+.modal-form-field {
+  margin-bottom: 8px;
+}
+
+.modal-form-label {
+  margin-bottom: 4px;
+  color: #8e8f99;
+  font-size: 12px;
+}
+
+.modal-form-wrapper {
+  position: relative;
+}
+.modal-form-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 12px;
+  padding-left: 38px;
+  border: 1px solid #2e2f4266;
+  border-radius: 4px;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-form-input:focus {
+  border-color: #4d5ae5;
+}
+.modal-form-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-form-input:focus + .modal-form-icon {
+  fill: #4d5ae5;
+}
+
+.modal-form-comment {
+  display: block;
+  width: 100%;
+  height: 120px;
+  padding: 8px 16px;
+  font-size: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #2e2f4266;
+  border-radius: 4px;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  resize: none;
+}
+.modal-form-comment:focus {
+  border-color: #4d5ae5;
+}
+
+.modal-form-agreement {
+  margin-bottom: 24px;
+}
+
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border-radius: 2px;
+  border: 1px solid #2e2f4266;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.agreement-input:checked + .modal-form-box > .custom-checkbox {
+  background-color: #404bbf;
+  border-color: #404bbf;
+}
+
+.modal-form-box {
+  font-size: 12px;
+  color: #8e8f99;
+}
+
+.custom-checkbox-icon {
+  fill: transparent;
+}
+
+.agreement-input:checked
+  + .modal-form-box
+  > .custom-checkbox
+  .custom-checkbox-icon {
+  fill: #fff;
+}
+
+.modal-form-link {
+  color: #4d5ae5;
+}
+
+.modal-form-button {
+  display: block;
+  color: #fff;
+  margin: 0 auto;
+  width: 169px;
+  height: 56px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 }
 /* #endregion */
